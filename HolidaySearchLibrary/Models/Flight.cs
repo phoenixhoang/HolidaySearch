@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HolidaySearchLibrary
+namespace HolidaySearchLibrary.Models
 {
     public class Flight
     {

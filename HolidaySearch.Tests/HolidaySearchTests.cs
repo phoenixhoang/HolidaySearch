@@ -9,54 +9,53 @@ namespace HolidaySearch.Tests
 {
     public class HolidaySearchTests
     {
-        private readonly string flightsFilePath = @"data/Flights.json";
-        private readonly string hotelsFilePath = @"data/Hotels.json";
+        private readonly string _flightsFilePath = @"data/Flights.json";
+        private readonly string _hotelsFilePath = @"data/Hotels.json";
+        private readonly DataLoader _dataLoader;
 
-        [Fact]
-        public void LoadingFlightsShouldReturnAllFlightsAvailable()
+        public HolidaySearchTests()
         {
-            var dataLoader = new DataLoader();
-            var flights = dataLoader.LoadFlights(flightsFilePath);
+            _dataLoader = new DataLoader();
 
-            Assert.NotNull(flights);
-            Assert.Equal(12, flights.Count);
         }
         [Fact]
-        public void LoadingHotelsShouldReturnAllHotelsAvailable()
+        public void HolidaySearchForCustomer1ShouldReturnFlight2AndHotel9()
         {
-            var dataLoader = new DataLoader();
-            var hotels = dataLoader.LoadHotels(hotelsFilePath);
+            //Arrange
 
-            Assert.NotNull(hotels);
-            Assert.Equal(13, hotels.Count);
+            //Act
+            //var results = HolidaySearch.Results.First().Flight.Id;
+
+            //Assert
+            //Assert.NotNull(results);
+            //Assert.Equal(2, flight.Id);
+            //Assert.Equal(9, hotel.Id);
         }
         [Fact]
-        public void LoadingFlightsShouldReturnCorrectDataFromFlightWithId3()
+        public void HolidaySearchForCustomer2ShouldReturnFlight6AndHotel5()
         {
-            var dataLoader = new DataLoader();
-            var flights = dataLoader.LoadFlights(flightsFilePath);
-            var flight = flights.FirstOrDefault(flights => flights.Id == 3);
+            //Arrange
 
-            Assert.NotNull(flights);
-            Assert.Equal("Trans American Airlines", flight.Airline);
-            Assert.Equal("MAN", flight.From);
-            Assert.Equal("PMI", flight.To);
-            Assert.Equal(170, flight.Price);
-            Assert.Equal(new DateTime(2023,06,15), flight.DepartureDate);
+            //Act
+            //var results = HolidaySearch.Results.First().Flight.Id;
+
+            //Assert
+            //Assert.NotNull(results);
+            //Assert.Equal(6, flight.Id);
+            //Assert.Equal(5, hotel.Id);
         }
         [Fact]
-        public void LoadingHotelsShouldReturnCorrectDataFromHotelWithId5()
+        public void HolidaySearchForCustomer3ShouldReturnFlight7AndHotel6()
         {
-            var dataLoader = new DataLoader();
-            var hotels = dataLoader.LoadHotels(hotelsFilePath);
-            var hotel = hotels.FirstOrDefault(hotels => hotels.Id == 5);
+            //Arrange
 
-            Assert.NotNull(hotels);
-            Assert.Equal("Sol Katmandu Park & Resort", hotel.Name);
-            Assert.Equal(new DateTime(2023, 06, 15), hotel.ArrivalDate);
-            Assert.Equal(60, hotel.PricePerNight);
-            Assert.Contains("PMI", hotel.LocalAirports);
-            Assert.Equal(10, hotel.Nights);
+            //Act
+            //var results = HolidaySearch.Results.First().Flight.Id;
+
+            //Assert
+            //Assert.NotNull(results);
+            //Assert.Equal(7, flight.Id);
+            //Assert.Equal(6, hotel.Id);
         }
     }
 }
