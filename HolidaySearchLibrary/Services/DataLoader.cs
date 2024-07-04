@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HolidaySearchLibrary.Models;
 using Newtonsoft.Json;
+using HolidaySearchLibrary.Models;
 
-namespace HolidaySearchLibrary
+namespace HolidaySearchLibrary.Services
 {
     public class DataLoader
     {

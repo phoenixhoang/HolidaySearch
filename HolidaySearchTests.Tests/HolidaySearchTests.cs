@@ -23,7 +23,7 @@ namespace HolidaySearchTests
         public void HolidaySearchForCustomer1ShouldReturnFlight2AndHotel9()
         {
             // Arrange
-            var holidaySearch = new HolidaySearch(_dataLoader, _flightsFilePath, _hotelsFilePath);
+            var holidaySearch = new HolidaySearcher(_dataLoader, _flightsFilePath, _hotelsFilePath);
 
             //Act
             var results = holidaySearch.Search("MAN", "AGP", new DateTime(2023, 07, 01), 7);
