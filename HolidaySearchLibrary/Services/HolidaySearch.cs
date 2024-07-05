@@ -21,7 +21,27 @@ namespace HolidaySearchLibrary.Services
         {
             var results = new List<(Flight Flight, Hotel Hotel)>();
 
+            // Find matching flights
+            var flightMatches = _flights.Where(f =>
+            f.From == departingFrom &&
+            f.To == travellingTo &&
+            f.DepartureDate == departureDate
+            );
 
+            // Find matching hotels
+            var hotelMatches = _hotels.Where(h =>
+            h.ArrivalDate == departureDate &&
+            h.LocalAirports.Contains(travellingTo) &&
+            h.Nights == duration
+            );
+
+            // Create holiday package with the flight and hotel
+            results = (from flight in flightMatches
+                       from hotel in hotelMatches
+                       select (Flight: flight, Hotel: hotel)).ToList();
+
+            // Order the holiday package by price lowest to highest
+            results = results.OrderBy(r => (r.Flight.Price + r.Hotel.PricePerNight) * r.Hotel.Nights).ToList();
 
             return results;
         }
