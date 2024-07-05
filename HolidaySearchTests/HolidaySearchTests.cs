@@ -72,5 +72,39 @@ namespace HolidaySearchTests
             results.First().Flight.Id.Should().Be(7);
             results.First().Hotel.Id.Should().Be(6);
         }
+        [Fact]
+        public void HolidaySearch_ForCustomer4_ShouldReturnFlight5AndHotel5()
+        {
+            //Arrange
+            var departingFrom = "MAN";
+            var travellingTo = "PMI";
+            var departureDate = new DateTime(2023, 06, 15);
+            var duration = 10;
+
+            //Act
+            var results = _holidaySearch.Search(departingFrom, travellingTo, departureDate, duration);
+
+            //Assert
+            results.Should().NotBeEmpty();
+            results.First().Flight.Id.Should().Be(5);
+            results.First().Hotel.Id.Should().Be(5);
+        }
+        [Fact]
+        public void HolidaySearch_ForCustomer5_ShouldReturnFlight11AndHotel12()
+        {
+            //Arrange
+            var departingFrom = "Any Airport";
+            var travellingTo = "AGP";
+            var departureDate = new DateTime(2023, 07, 01);
+            var duration = 14;
+
+            //Act
+            var results = _holidaySearch.Search(departingFrom, travellingTo, departureDate, duration);
+
+            //Assert
+            results.Should().NotBeEmpty();
+            results.First().Flight.Id.Should().Be(11);
+            results.First().Hotel.Id.Should().Be(12);
+        }
     }
 }

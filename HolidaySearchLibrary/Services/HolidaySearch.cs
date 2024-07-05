@@ -23,7 +23,7 @@ namespace HolidaySearchLibrary.Services
 
             // Find matching flights
             var flightMatches = _flights.Where(f =>
-            f.From == departingFrom &&
+            (departingFrom == "Any Airport" || f.From == departingFrom) &&
             f.To == travellingTo &&
             f.DepartureDate == departureDate
             );
@@ -40,7 +40,7 @@ namespace HolidaySearchLibrary.Services
                        from hotel in hotelMatches
                        select (Flight: flight, Hotel: hotel)).ToList();
 
-            // Order the holiday package by price lowest to highest
+            // Order the holiday package by total price from lowest to highest
             results = results.OrderBy(r => (r.Flight.Price + r.Hotel.PricePerNight) * r.Hotel.Nights).ToList();
 
             return results;
